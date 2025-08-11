@@ -1,10 +1,10 @@
 
-import {Component, input, output} from '@angular/core';
+import {Component, Input, input, output} from '@angular/core';
 import {NgIf} from "@angular/common";
 
 @Component({
     selector: 'app-task',
-    standalone: false,
+    standalone: true,
     template: `
 		<div class="list-item {{ task()?.state }}">
 			<label
