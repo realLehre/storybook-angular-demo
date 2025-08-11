@@ -1,5 +1,5 @@
 import {fn} from "@storybook/test";
-import TaskComponent from "./task.component";
+import TaskComponent from './task.component';
 import {Meta, StoryObj} from "@storybook/angular";
 
 export const ActionsData = {

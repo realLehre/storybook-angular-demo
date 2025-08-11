@@ -4,7 +4,7 @@ import {NgIf} from "@angular/common";
 
 @Component({
     selector: 'app-task',
-    standalone: true,
+    standalone: false,
     template: `
 		<div class="list-item {{ task()?.state }}">
 			<label
@@ -46,20 +46,12 @@ import {NgIf} from "@angular/common";
 			}
 		</div>
     `,
-    imports: [
-        NgIf
-    ]
 })
 export default class TaskComponent {
-    /**
-     * The shape of the task object
-     */
     task = input<any>()
 
-    // tslint:disable-next-line: no-output-on-prefix
     onPinTask = output<Event>()
 
-    // tslint:disable-next-line: no-output-on-prefix
     onArchiveTask = output<Event>();
 
     onPin(id: any) {
