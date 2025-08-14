@@ -1,0 +1,29 @@
+<button #trigger type="button" (click)="openPopover()" aria-haspopup="dialog" aria-expanded="{{!!overlayRef}}" class="drp-trigger">
+  {{ format(range().start) }} - {{ format(range().end) }} ({{ range().timeZone }})
+</button>
+<ng-template #pickerPopover>
+  <div class="drp-popover" role="dialog" aria-modal="true">
+    <div class="drp-section">
+      <label i18n>Start Date</label>
+      <input type="date" [value]="format(range().start)" (change)="updateStart($event.target.value)" />
+    </div>
+    <div class="drp-section">
+      <label i18n>End Date</label>
+      <input type="date" [value]="format(range().end)" (change)="updateEnd($event.target.value)" />
+    </div>
+    <div class="drp-section">
+      <label i18n>Time Zone</label>
+      <select [value]="range().timeZone" (change)="updateTimeZone($event.target.value)">
+        <option *ngFor="let tz of timeZones" [value]="tz">{{ tz }}</option>
+      </select>
+    </div>
+    <div class="drp-section">
+      <label i18n>Presets</label>
+      <div class="drp-presets">
+        <button *ngFor="let preset of presets" type="button" (click)="selectPreset(preset)">{{ preset.label }}</button>
+      </div>
+    </div>
+    <button type="button" (click)="closePopover()" i18n>Close</button>
+  </div>
+</ng-template>
+
